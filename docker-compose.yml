@@ -1,0 +1,18 @@
+version: '3.9'
+
+# Note, this web-server is intentionally left open so it's possible to browse the served files.
+
+services:
+    SimpleShare:
+        #image: simpleshare
+        image: fsteff/simpleshare
+        container_name: SimpleShare
+        restart: unless-stopped
+        ports:
+            - 8889:80 # web-server
+        volumes:
+            # Access files we want to share.
+            # Note, this is a bind mount to the current folder! Remember to create the "shared" folder.
+            - ./shared:/shared
+
+
